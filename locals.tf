@@ -1,3 +1,4 @@
+# B"H
 locals {
   images = {
     us-east-1      = "ami-037ff6453f0855c46"

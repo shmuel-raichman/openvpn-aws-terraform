@@ -1,3 +1,4 @@
+# B"H
 variable "server_region" {
   description = "Region to deploy server"
   type        = string
