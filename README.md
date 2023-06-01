@@ -34,6 +34,8 @@ REGION_SOUTH_AS="ap-southeast-1" # Philipins if you choose the right zone
 
 REGION=${REGION_SOUTH_AF}
 
+terraform init
+
 terraform apply -var server_region="${REGION}" -var server_username="${OPEN_VPN_USER}" -var server_password="${OPEN_VPN_PASS}"
 terraform destroy -var server_region="${REGION}"
 ```
