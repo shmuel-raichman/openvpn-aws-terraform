@@ -16,3 +16,8 @@ variable "server_password" {
   type        = string
   default     = "password"
 }
+
+# Specify 3 availability zones from the region
+variable "availability_zones" {
+  default = ["us-east-1a"]]
+}

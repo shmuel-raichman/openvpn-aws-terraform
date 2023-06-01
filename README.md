@@ -28,8 +28,11 @@ terraform destroy -var server_region="ap-south-1"
 REGION_INDIA="ap-south-1"
 REGION_UK="eu-central-1"
 REGION_US="us-east-1"
+REGION_SOUTH_AF="af-south-1"
+REGION_SOUTH_AS="ap-southeast-1" # Philipins if you choose the right zone
 
-REGION=${REGION_INDIA}
+
+REGION=${REGION_SOUTH_AF}
 
 terraform apply -var server_region="${REGION}" -var server_username="${OPEN_VPN_USER}" -var server_password="${OPEN_VPN_PASS}"
 terraform destroy -var server_region="${REGION}"

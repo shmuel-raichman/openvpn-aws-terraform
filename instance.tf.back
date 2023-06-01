@@ -1,0 +1,44 @@
+# B"H
+
+# Create a VPC
+resource "aws_vpc" "opnvpn_vpc" {
+  cidr_block = "10.0.0.0/16"
+
+  tags = {
+    Name = "opnvpn_vpc"
+  }
+}
+
+# Create a subnet in each availability zone in the VPC. Keep in mind that at this point these subnets are private without internet access. They would need other networking resources for making them accesible
+resource "aws_subnet" "openvpn_subnet" {
+  count             = length(var.availability_zones)
+  vpc_id            = aws_vpc.opnevpn_vpc.id
+  cidr_block        = cidrsubnet("10.0.0.0/16", 8, count.index)
+  availability_zone = var.availability_zones[count.index]
+
+  tags = {
+    Name = "openvpn-subnet-${count.index}"
+  }
+}
+
+resource "aws_instance" "openvpn" {
+  count         = length(var.availability_zones)
+  ami                    = local.images[var.server_region]
+  instance_type          = "t2.micro"
+  subnet_id     = aws_subnet.openvpn_subnet[count.index].id
+  vpc_security_group_ids = [aws_security_group.instance.id]
+
+  user_data = <<-EOF
+              admin_user=${var.server_username}
+              admin_pw=${var.server_password}
+              EOF
+
+  tags = {
+    Name = "openvpn"
+  }
+} 
+  
+
+
+# terraform apply -var server_region="eu-central-1" -var server_username="${OPEN_VPN_USER}" -var server_password="${OPEN_VPN_PASS}"
+# terraform apply -var server_region="us-east-1" -var server_username="${OPEN_VPN_USER}" -var server_password="${OPEN_VPN_PASS}"
