@@ -19,5 +19,5 @@ variable "server_password" {
 
 # Specify 3 availability zones from the region
 variable "availability_zones" {
-  default = ["us-east-1a"]]
+  default = ["us-east-1a"]
 }
