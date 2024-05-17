@@ -32,7 +32,7 @@ REGION_SOUTH_AF="af-south-1"
 REGION_SOUTH_AS="ap-southeast-1" # Philipins if you choose the right zone
 
 
-REGION=${REGION_SOUTH_AF}
+REGION=${REGION_US}
 
 terraform init
 
