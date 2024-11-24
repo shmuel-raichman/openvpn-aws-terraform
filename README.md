@@ -30,6 +30,7 @@ REGION_UK="eu-central-1"
 REGION_US="us-east-1"
 REGION_SOUTH_AF="af-south-1"
 REGION_SOUTH_AS="ap-southeast-1" # Philipins if you choose the right zone
+REGION_IL="il-central-1" # Israel
 
 
 REGION=${REGION_US}
