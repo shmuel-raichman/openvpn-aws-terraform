@@ -1,8 +1,9 @@
 # B"H
 resource "aws_instance" "openvpn" {
-  ami                    = local.images[var.server_region]
-  instance_type          = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.instance.id]
+  ami                     = local.images[var.server_region]
+  # instance_type          = "t2.micro"
+  instance_type           = var.instance_type
+  vpc_security_group_ids  = [aws_security_group.instance.id]
 
   user_data = <<-EOF
               admin_user=${var.server_username}

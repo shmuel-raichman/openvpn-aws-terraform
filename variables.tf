@@ -21,3 +21,10 @@ variable "server_password" {
 variable "availability_zones" {
   default = ["us-east-1a"]
 }
+
+variable "instance_type" {
+  description = "Instance type to deploy"
+  type        = string
+  default     = "t3.micro"
+  # default     = "c5.large"
+}
